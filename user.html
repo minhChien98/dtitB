@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+        <script>
+        var socket = io('http://konoha.vn:20097',{'transports': ['websocket', 'polling']});
+
+        socket.on('login', function (data) {
+            console.log(data);
+            socket.emit('login', { command: 1000,'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OGQ3Mzg3YTc4NmM2NDQyYmFhM2VhZDgiLCJzZWNyZXQiOjE0OTA0OTk3MDYsImlhdCI6MTQ5MjQxOTM1MCwiZXhwIjoxNDkyNTkyMTUwfQ.Ex3_luT4CApHL01tIdCeamaYX_kkbhHnI-Oc5lhZXw4' });//login
+        });
+
+        socket.on('auth', function(data){
+            console.log(data);
+        });
+
+
+        socket.on('user', function (data) {
+
+
+            console.log(data);
+
+        });
+        socket.on('question', function (data) {
+
+            console.log(data);
+
+        });
+
+
+    </script>
+    <title>PLAYER</title>
+</head>
+<body>
+    <input type="button" value="join" onclick="socket.emit('request', { command: 4001, requestId: '57b596165d81d78c1c002f41'});//join room" />
+    <input type="button" value="leave" onclick="socket.emit('request', { command: 4003, requestId: '57b596165d81d78c1c002f41' });//leave room" />
+</body>
+</html>

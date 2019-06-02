@@ -1,0 +1,20 @@
+{ 
+    "_id" : ObjectId("5ac0bb46e2712117d8097831"), 
+    "name" : "List1", 
+    "isRandom" : true, 
+    "usingQuestion" : 3.0, 
+    "questions" : [
+        {
+            "questId" : ObjectId("5ac0ba7be2712117d8097830"), 
+            "point" : 3.0
+        }, 
+        {
+            "questId" : ObjectId("5adfe583116d653e44a09077"), 
+            "point" : 3.0
+        }, 
+        {
+            "questId" : ObjectId("5adfe58b116d653e44a09078"), 
+            "point" : 3.0
+        }
+    ]
+}

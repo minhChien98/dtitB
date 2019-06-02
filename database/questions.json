@@ -1,0 +1,69 @@
+{ 
+    "_id" : ObjectId("5ac0ba7be2712117d8097830"), 
+    "content" : "Hay tra loi cau hoi so 1?", 
+    "options" : [
+        {
+            "numbering" : "1", 
+            "answer" : "Dap an 1"
+        }, 
+        {
+            "numbering" : "2", 
+            "answer" : "Dap an 2"
+        }, 
+        {
+            "numbering" : "3", 
+            "answer" : "Dap an 3"
+        }, 
+        {
+            "numbering" : "4", 
+            "answer" : "Dap an 4"
+        }
+    ], 
+    "correctAnswer" : "1"
+}
+{ 
+    "_id" : ObjectId("5adfe583116d653e44a09077"), 
+    "content" : "Hay tra loi cau hoi so 1?", 
+    "options" : [
+        {
+            "numbering" : "1", 
+            "answer" : "Dap an 1"
+        }, 
+        {
+            "numbering" : "2", 
+            "answer" : "Dap an 2"
+        }, 
+        {
+            "numbering" : "3", 
+            "answer" : "Dap an 3"
+        }, 
+        {
+            "numbering" : "4", 
+            "answer" : "Dap an 4"
+        }
+    ], 
+    "correctAnswer" : "1"
+}
+{ 
+    "_id" : ObjectId("5adfe58b116d653e44a09078"), 
+    "content" : "Hay tra loi cau hoi so 1?", 
+    "options" : [
+        {
+            "numbering" : "1", 
+            "answer" : "Dap an 1"
+        }, 
+        {
+            "numbering" : "2", 
+            "answer" : "Dap an 2"
+        }, 
+        {
+            "numbering" : "3", 
+            "answer" : "Dap an 3"
+        }, 
+        {
+            "numbering" : "4", 
+            "answer" : "Dap an 4"
+        }
+    ], 
+    "correctAnswer" : "1"
+}

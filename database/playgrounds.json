@@ -1,0 +1,40 @@
+{ 
+    "_id" : ObjectId("5ae0749a55484e41508069f9"), 
+    "updatedAt" : ISODate("2018-04-25T12:29:25.876+0000"), 
+    "createdAt" : ISODate("2018-04-25T12:29:14.522+0000"), 
+    "player" : ObjectId("5ae0735f55484e41508069e8"), 
+    "roundid" : ObjectId("5ac0ebbee2712117d809783d"), 
+    "questListId" : ObjectId("5ac0bb46e2712117d8097831"), 
+    "time" : NumberInt(1524659354), 
+    "status" : NumberInt(2), 
+    "questIndex" : NumberInt(3), 
+    "totalScore" : NumberInt(3), 
+    "totalTime" : NumberInt(11), 
+    "history" : [
+        {
+            "question" : ObjectId("5adfe583116d653e44a09077"), 
+            "answerScore" : NumberInt(3), 
+            "answer" : "3", 
+            "score" : NumberInt(0), 
+            "time" : NumberInt(6), 
+            "_id" : ObjectId("5ae0749a55484e41508069fc")
+        }, 
+        {
+            "question" : ObjectId("5adfe58b116d653e44a09078"), 
+            "answerScore" : NumberInt(3), 
+            "answer" : "1", 
+            "score" : NumberInt(3), 
+            "time" : NumberInt(2), 
+            "_id" : ObjectId("5ae0749a55484e41508069fb")
+        }, 
+        {
+            "question" : ObjectId("5ac0ba7be2712117d8097830"), 
+            "answerScore" : NumberInt(3), 
+            "answer" : "4", 
+            "score" : NumberInt(0), 
+            "time" : NumberInt(3), 
+            "_id" : ObjectId("5ae0749a55484e41508069fa")
+        }
+    ], 
+    "__v" : NumberInt(0)
+}

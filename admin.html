@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io('http://localhost:4000', { 'transports': ['websocket', 'polling'] });
+
+        socket.on('login', function (data) {
+            console.log(data);
+            socket.emit('login', { command: 1000, 'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OGQ3Mzg3YTc4NmM2NDQyYmFhM2VhZDYiLCJzZWNyZXQiOjE0OTA0OTk3MDYsImlhdCI6MTQ5MDQ5OTkyMywiZXhwIjoxNDkwNjcyNzIzfQ.ocFy1bY7DzZVD0OOQhCxWTD7CU5xSwR2GDT4Hh0cXFE' });//login
+        });
+
+        socket.on('auth', function (data) {
+            console.log(data);
+        });
+
+
+        socket.on('admin', function (data) {
+
+
+            console.log(data);
+
+        });
+        socket.on('request', function (data) {
+
+            console.log(data);
+
+        });
+
+
+
+
+
+
+    </script>
+    <title>ADMIN</title>
+</head>
+
+<body>
+    <input type="button" value="join"
+        onclick="socket.emit('request', { command: 4001, requestId: '57b596165d81d78c1c002f41'});//join room" />
+    <input type="button" value="leave"
+        onclick="socket.emit('request', { command: 4003, requestId: '57b596165d81d78c1c002f41' });//leave room" />
+</body>
+
+</html>

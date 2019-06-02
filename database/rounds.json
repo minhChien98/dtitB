@@ -1,0 +1,23 @@
+{ 
+    "_id" : ObjectId("5ac0ebbee2712117d809783d"), 
+    "name" : "Round1", 
+    "questionsLists" : [
+        {
+            "questlistId" : ObjectId("5ac0bb46e2712117d8097831")
+        }, 
+        {
+            "questlistId" : ObjectId("5ac0bb46e2712117d8097831")
+        }, 
+        {
+            "questlistId" : ObjectId("5ac0bb46e2712117d8097831")
+        }
+    ], 
+    "time" : 20.0, 
+    "beginTime" : 1522582725.0, 
+    "endTime" : 1722582725.0, 
+    "isAlwaysShow" : true, 
+    "isAllowReplay" : true, 
+    "isAutoPlay" : true, 
+    "description" : "thang", 
+    "playTime" : 100.0
+}
