@@ -9,7 +9,18 @@ let Answer4 = 0;
 let currentQues = 1;
 module.exports = function(socket) {
   return function(data) {
-    if (data.command === 1000 || data.command === 1001) {
+    if (
+      data.command === 1000 ||
+      data.command === 1001 ||
+      data.command === 1002
+    ) {
+      if (data.command === 1002) {
+        Answer1 = 0;
+        Answer2 = 0;
+        Answer3 = 0;
+        Answer4 = 0;
+        currentQues = 1;
+      }
       const question = Question.findById(data.message);
       question.then(quest => {
         if (!quest) {
@@ -62,7 +73,6 @@ module.exports = function(socket) {
     }
     if (data.command === 3002) {
       const sumAns = Answer1 + Answer2 + Answer3 + Answer4;
-      console.log(Answer1);
       const percentA = parseInt((Answer1 / sumAns) * 100, 10);
       const percentB = parseInt((Answer2 / sumAns) * 100, 10);
       const percentC = parseInt((Answer3 / sumAns) * 100, 10);
@@ -107,7 +117,7 @@ module.exports = function(socket) {
       User.find({})
         .then(user => {
           user.map(item => {
-            if (item.role + "" == roleUserId + "" && item.die < 2) {
+            if (String(item.role) == String(roleUserId) && item.die < 2) {
               item.status = true;
               item.save(function(err) {
                 if (err) {
