@@ -7,6 +7,9 @@ let Answer2 = 0;
 let Answer3 = 0;
 let Answer4 = 0;
 let currentQues = 1;
+global.ques = 0;
+global.round = 1;
+global.sendQuesRound2 = false;
 module.exports = function(socket) {
   return function(data) {
     if (
@@ -20,6 +23,7 @@ module.exports = function(socket) {
         Answer3 = 0;
         Answer4 = 0;
         currentQues = 1;
+        global.ques = 1;
       }
       const question = Question.findById(data.message);
       question.then(quest => {
@@ -35,6 +39,10 @@ module.exports = function(socket) {
           currentQues
         });
         currentQues++;
+        global.ques++;
+        if (global.round == 2 && global.sendQuesRound2 == false) {
+          global.sendQuesRound2 == true;
+        }
       });
     }
     if (data.command === 3001) {
@@ -82,24 +90,25 @@ module.exports = function(socket) {
       });
     }
     if (data.command === 4000) {
-      var room = io.sockets.adapter.rooms["user room"];
-      let socketIdArr = [];
-      socketIdArr = room ? Object.keys(room.sockets) : [];
-      socketIdArr.forEach(id => {
-        const query = User.findById(global.hshSocketUser[id]).populate("role");
-        query
-          .then(user => {
-            if (user) {
-              socket.to(id).emit("receiveAnswer", {
-                result: user.status,
-                die: user.die
-              });
-            }
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      });
+      // var room = io.sockets.adapter.rooms["user room"];
+      // let socketIdArr = [];
+      // socketIdArr = room ? Object.keys(room.sockets) : [];
+      // socketIdArr.forEach(id => {
+      //   const query = User.findById(global.hshSocketUser[id]).populate("role");
+      //   query
+      //     .then(user => {
+      //       if (user) {
+      //         socket.to(id).emit("receiveAnswer", {
+      //           result: user.status,
+      //           die: user.die
+      //         });
+      //       }
+      //     })
+      //     .catch(err => {
+      //       console.log(err);
+      //     });
+      // });
+      socket.broadcast.emit("receiveAnswer");
     }
     if (data.command === 4500) {
       let roleUserId = "";
@@ -132,6 +141,7 @@ module.exports = function(socket) {
           console.log(err);
         });
       socket.broadcast.emit("changeQuestionList");
+      global.round = 2;
     }
     if (data.command === 5000) {
       socket.broadcast.emit("stopTime");

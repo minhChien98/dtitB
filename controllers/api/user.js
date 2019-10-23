@@ -15,6 +15,48 @@ router.get("/checkapi", async function(req, res) {
   });
 });
 
+router.post("/logout", auth, async function(req, res) {
+  const studentId = req.body.studentId;
+  console.log(req.decoded._id);
+  const user = await User.findById(req.decoded._id);
+  console.log(user);
+  if (user) {
+    if (global.round == 1 && global.ques != 0) {
+      user.status = false;
+      let dieRaw = user.die;
+      dieRaw++;
+      user.die = dieRaw;
+      const data = await user.save();
+      res.json({
+        code: 2,
+        message: "Da bi loai"
+      });
+      return;
+    }
+    if (global.round == 2 && global.sendQuesRound2 == true) {
+      user.status = false;
+      let dieRaw = user.die;
+      dieRaw++;
+      user.die = dieRaw;
+      const data = await user.save();
+      res.json({
+        code: 0,
+        message: "Da bi loai"
+      });
+      return;
+    }
+    res.json({
+      code: 1,
+      message: "Da bi loai"
+    });
+  } else {
+    res.json({
+      code: false,
+      message: "can not find user"
+    });
+  }
+});
+
 router.post("/answer/:uid", auth, async function(req, res) {
   const studentId = req.params.uid;
   const user = await User.findById(studentId);
@@ -24,6 +66,8 @@ router.post("/answer/:uid", auth, async function(req, res) {
         result: false
       });
     } else {
+      console.log(req.body.result);
+      console.log(typeof req.body.result);
       if (String(req.body.result) == "true") {
         res.json({
           result: true
@@ -35,6 +79,7 @@ router.post("/answer/:uid", auth, async function(req, res) {
         user.die = dieRaw;
         const data = await user.save();
         res.json({
+          die: dieRaw,
           result: false
         });
       }
