@@ -24,6 +24,8 @@ module.exports = function(socket) {
         Answer4 = 0;
         currentQues = 1;
         global.ques = 1;
+        global.round = 1;
+        global.sendQuesRound2 = false;
       }
       const question = Question.findById(data.message);
       question.then(quest => {
