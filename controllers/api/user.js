@@ -21,7 +21,7 @@ router.post("/logout", auth, async function(req, res) {
   const user = await User.findById(req.decoded._id);
   console.log(user);
   if (user) {
-    if (global.round == 1 && global.ques != 0) {
+    if (global.round == 1 && global.ques != 0 && Number(user.die) == 0) {
       user.status = false;
       let dieRaw = user.die;
       dieRaw++;
@@ -33,7 +33,11 @@ router.post("/logout", auth, async function(req, res) {
       });
       return;
     }
-    if (global.round == 2 && global.sendQuesRound2 == true) {
+    if (
+      global.round == 2 &&
+      global.sendQuesRound2 == true &&
+      Number(user.die) == 1
+    ) {
       user.status = false;
       let dieRaw = user.die;
       dieRaw++;
