@@ -108,7 +108,7 @@ module.exports = function(socket) {
       //       console.log(err);
       //     });
       // });
-      socket.broadcast.emit("receiveAnswer");
+      socket.broadcast.emit("receiveAnswer", { round: global.round });
     }
     if (data.command === 4500) {
       let roleUserId = "";
@@ -128,6 +128,7 @@ module.exports = function(socket) {
           user.map(item => {
             if (String(item.role) == String(roleUserId) && item.die < 2) {
               item.status = true;
+              item.die = 1;
               item.save(function(err) {
                 if (err) {
                   console.log(err);
