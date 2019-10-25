@@ -96,6 +96,39 @@ router.post("/answer/:uid", auth, async function(req, res) {
   }
 });
 
+router.post("/score/:uid", auth, async function(req, res) {
+  const studentId = req.params.uid;
+  const user = await User.findById(studentId);
+  if (user) {
+    user.score = Number(req.body.score);
+    const data = await user.save();
+    res.json({
+      score: user.score
+    });
+  } else {
+    res.json({
+      code: -1,
+      message: "can not find user"
+    });
+  }
+});
+
+router.get("/score", async function(req, res) {
+  const user = await User.find()
+    .sort({ score: -1 })
+    .populate("role");
+  if (user) {
+    res.json({
+      data: user
+    });
+  } else {
+    res.json({
+      code: -1,
+      message: "can not find user"
+    });
+  }
+});
+
 router.post("/", auth, function(req, res) {
   // // find the user
   User.findOne(
@@ -221,6 +254,7 @@ router.post("/signup", function(req, res) {
                 name: req.body.name,
                 status: true,
                 die: 0,
+                score: 0,
                 isLocked: false,
                 isOnline: false,
                 timePassChange: (Date.now() / 1000) | 0,

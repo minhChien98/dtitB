@@ -10,6 +10,7 @@ var user = new Schema({
   pass: String,
   status: Boolean,
   die: Number,
+  score: Number,
   isLocked: Boolean,
   isOnline: Boolean,
   role: {
